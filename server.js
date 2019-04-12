@@ -14,11 +14,11 @@ server.post("/games", (req, res) => {
         .insert({ title, genre, releaseYear })
         .then(x => {
         if (title && genre) {
-            res.status(201).json({ message: `${title} successfully added` });
+            res.status(201).json({ message: `${title} added to library.` });
         }
         })
         .catch(error => {
-        res.status(422).json(error);
+        res.status(404).json(error);
         });
 });
 
