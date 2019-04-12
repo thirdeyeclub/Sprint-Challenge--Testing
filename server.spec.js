@@ -29,7 +29,6 @@ describe("SERVER", () => {
         //     expect(res.status).toBe(404);
         // });
         //Post test 3
-       
         it("returns successfully", async () => {
             let res = await request(server)
             .post("/games")
@@ -45,6 +44,15 @@ describe("SERVER", () => {
             expect(res.status).toBe(200)        })
     });
     //Get test 2
-
+    it('is there a json with data?', () => {
+        return request(server)
+        .get('/games')
+        .expect('Content-Type', /json/);
+    });
     //Get test 3
+    it("returns array of data", async () => {
+        let res = await request(server)
+        .get("/games");
+        expect(Array.isArray(res.body)).toBe(true);
+});
 });
